@@ -18,5 +18,27 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $now = Carbon::now();
+
+        $faker = Faker::create();
+
+        $people = array();
+
+        for ($i = 0; $i < 200; $i++) {
+            $people[] = [
+                'surname' =>$faker->lastName,
+                'name' => $faker->firstName,
+                'second name' => $faker->secondName,
+                'age' => $faker->age,
+                'country' => $faker->country,
+                'city' => $faker->city,
+                'street' => $faker->streetName,
+                'house number' => $faker->houseNumber,
+                'phone number' => $faker->phoneNumber,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+        DB::table('people')->insert($people);
     }
 }
