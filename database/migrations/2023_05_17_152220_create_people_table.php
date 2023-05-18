@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->string("surname");
             $table->string("name");
-            $table->string("second name");
-            $table->string("age");
-            $table->string("country");
-            $table->string("city");
+            $table->string("surname");
+            $table->string("phone_number");
             $table->string("street");
-            $table->string("house number");
+            $table->string("city");
+            $table->string("country");
+            $table->timestamps();
         });
     }
 
@@ -31,4 +30,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('people');
     }
-};
+}; 

@@ -4,6 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+
+use Faker\Factory as Faker;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +24,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+
         $now = Carbon::now();
 
         $faker = Faker::create();
@@ -26,19 +34,17 @@ class DatabaseSeeder extends Seeder
 
         for ($i = 0; $i < 200; $i++) {
             $people[] = [
-                'surname' =>$faker->lastName,
                 'name' => $faker->firstName,
-                'second name' => $faker->secondName,
-                'age' => $faker->age,
-                'country' => $faker->country,
-                'city' => $faker->city,
+                'surname' => $faker->lastName,
+                'phone_number' => $faker->phoneNumber,
                 'street' => $faker->streetName,
-                'house number' => $faker->houseNumber,
-                'phone number' => $faker->phoneNumber,
+                'city' => $faker->city,
+                'country' => $faker->country,
                 'created_at' => $now,
                 'updated_at' => $now,
             ];
         }
+        
         DB::table('people')->insert($people);
     }
-}
+} 
